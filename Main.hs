@@ -28,7 +28,10 @@ putBoard board = putStrLn (concat (map (++ "\n") (map show (stateStrings)))) whe
   stateStrings = map concat ((map . map) toString (states board))
 
 main = do
-  let iterations = 100
+  putStrLn "\nWelcome to Conway's Game of Life!\nEdit board.txt to change the starting configuration\n"
+  putStrLn "How many Iterations would you like to run through?"
+  iterations' <- getLine
+  let iterations = read iterations' :: Int
   board <- readBoard
   putBoard board
   mainHelper iterations board
